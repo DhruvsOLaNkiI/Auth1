@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const plm = require('passport-local-mongoose');
 
-mongoose.connect('mongodb+srv://user123:user123@cluster0.ofi5bhc.mongodb.net/?appName=Cluster0')
+mongoose.connect('mongodb+srv://user123:user123@cluster0.ofi5bhc.mongodb.net/my-app').then(() => {
+  console.log('Connected to MongoDB');
+}).catch(err => {
+  console.error('Error connecting to MongoDB:', err);
+});
 
 const userSchema = new mongoose.Schema({
   username:{
@@ -12,7 +16,6 @@ const userSchema = new mongoose.Schema({
   },
   password:{
     type: String,
-    required: true,
   },
   fullName:{
     type: String,

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
@@ -10,26 +9,29 @@
         <!--pinterest logo-->
         <img src="https://i.pinimg.com/originals/d3/d1/75/d3d175e560ae133f1ed5cd4ec173751a.png" alt="pin logo" class="img1" />
         <p class="header">make account in to see more</p>
+        
+<% if(error && error.length > 0) { %>
+  <p class="error"><%= error %></p>
+<% } %>
 
-      <form action="/register" method="post">
+      <form action="/login" method="post">
         <input type="username" name="username" placeholder="username" class="detail" /><br />
-        <input type="email" name="email" placeholder="Email" class="detail" /><br />
-        <input type="fullName" name="fullName" placeholder="fullName" class="detail" /><br />
         <input type="password" name="password" placeholder="Password" class="detail" />
-        <input type="submit" class="btn int" value="register Account">register </input>  
+        <input type="submit" class="btn int" value="login Account">register </input>  
       </form>
         
         <a href="/forgot">
         <h4>Forgot your password?</h4>
         </a>
 
+    
         <footer>
           <p>
             By continuing, you agree to Pinterest's
             <b>Terms of Service, Privacy policy.</b>
           </p>
           <hr />
-          <a href="/login">Allredy havve account ? Login</a>
+          <p>Not on Pinterest yet? Sign up</p>
         </footer>
       </div>
     </div>
