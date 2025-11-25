@@ -21,8 +21,9 @@ router.get('/login', function(req, res) {
     res.render('login', {error: req.flash('error')});
 });
 
-router.get('/profile', isLoggedIn,function(req, res) {
-  res.render('profile');
+router.get('/profile', isLoggedIn,async function(req, res) {
+  const user = await userModel.findOne({username: req.session.passport.user})
+  res.render('profile' , {user});
 });
 
 router.post('/register', function(req, res) {
