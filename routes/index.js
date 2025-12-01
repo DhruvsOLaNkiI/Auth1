@@ -18,7 +18,7 @@ router.get('/feed', function(req, res, next) {
 });
 
 // Handle file upload
-router.post('/upload', upload.single('file'), (req, res)=>{
+router.post('/upload', upload.single('file'), function (req, res) {
 // Access the uploaded file details via req. file 
  if (!req.file) {
     return res.status(400).send('No files were uploaded.');
