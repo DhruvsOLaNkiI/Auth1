@@ -8,12 +8,11 @@
 </head>
 <body>
     <div class="tumblr-card">
-        <img class="avatar" src="https://64.media.tumblr.com/8b6c33aa93f4e4a">
-        <h1 class="name"><%= user.username %></h1>
+<img class="avatar" src="https://64.media.tumblr.com/8b6c33aa93f4e4a">        <h1 class="name"><%= user.username %></h1>
         <h2 class="username">@<%= user.fullName %> • <span class="follow">follow</span></h2>
         <div class="grid">
           <% user.posts.forEach(function(post){ %>
-              <img src="/image/uploads/<%= post.image %>"/>
+              <img src="/images/uploads/<%= post.image %>"/>
               <div><%= post.imageText %></div>
            <% }) %>
         </div>
