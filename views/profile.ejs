@@ -8,19 +8,20 @@
 </head>
 <body>
     <div class="tumblr-card">
-        <img class="avatar" src="https://64.media.tumblr.com/8b6c33aa93f4e4a128edd34ec8e4b8db/e57024d1c0c3eece-44/s250x400/4d4ddece29f91e62787c9495bc7659d9039198cb.gifv">
+        <img class="avatar" src="https://64.media.tumblr.com/8b6c33aa93f4e4a">
         <h1 class="name"><%= user.username %></h1>
         <h2 class="username">@<%= user.fullName %> • <span class="follow">follow</span></h2>
         <div class="grid">
-          <img src="https://i.pinimg.com/736x/29/8a/ec/298aeccfec6cdc884b696a65f6e3f1be.jpg"/>
-          <img src="https://i.pinimg.com/736x/a7/76/05/a7760528b63adbb26d34db1f12129c42.jpg"/>
-          <img src="https://i.pinimg.com/736x/2c/6f/c2/2c6fc24635769f51922d1021fceac898.jpg"/>
-          <img src="https://i.pinimg.com/736x/19/38/27/1938277c8a9d1d275832b2883db2949d.jpg"/>
-          <img src="https://i.pinimg.com/736x/95/d2/b4/95d2b4187ff9f60c93f8fc1a4362e237.jpg"/>
-          <img src="https://i.pinimg.com/736x/fb/19/b4/fb19b486fd632a08289e1daa87274e8f.jpg"/>
+          <% user.posts.forEach(function(post){ %>
+              <img src="/image/uploads/<%= post.image %>"/>
+              <div><%= post.imageText %></div>
+           <% }) %>
         </div>
+          
+        
         <a href="/logout" class="button">Logout</a>
         <form action="/upload" method="post" enctype="multipart/form-data">
+          <input type="text" name="filecaptiont">
           <input type="file" name="file">
           <input type="submit">
         </form>
