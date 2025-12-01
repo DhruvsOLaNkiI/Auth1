@@ -33,7 +33,7 @@ const postdata = await postModel.create({
 })
 user.posts.push(postdata._id)
 await user.save();
-res.send('uploaded successfully');
+res.redirect('/profile');
 })
 
 router.get('/login', function(req, res) {
