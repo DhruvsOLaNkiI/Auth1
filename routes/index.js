@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const userModel = require('../routes/users')
 const passport = require('passport')
-
+const upload = require('./multer')
 
 //in doh line say user login hota h 
 const localStrategy = require('passport-local')
@@ -16,6 +16,15 @@ router.get('/', function(req, res, next) {
 router.get('/feed', function(req, res, next) {
   res.render('feed');
 });
+
+// Handle file upload
+router.post('/upload', upload.single('file'), (req, res)=>{
+// Access the uploaded file details via req. file 
+ if (!req.file) {
+    return res.status(400).send('No files were uploaded.');
+}
+res.send('File uploaded successfully');
+})
 
 router.get('/login', function(req, res) {
     res.render('login', {error: req.flash('error')});
@@ -63,4 +72,7 @@ if(req.isAuthenticated())
 return next();
 res.redirect('/login')
 }
+
+
+
 module.exports = router;
